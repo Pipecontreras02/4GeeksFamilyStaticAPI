@@ -13,7 +13,9 @@ class FamilyStructure:
         self.last_name = last_name
 
         # example list of members
-        self._members = [{"id": self._generateId(),
+        self._members = [
+        {
+            "id": self._generateId(),
             "first_name": "John",
             "last_name": last_name,
             "age": 33,
@@ -40,13 +42,16 @@ class FamilyStructure:
 
     #adding a member
     def add_member(self, member):
+        result = {"done": False}
         try:
             if member["id"] == None:
                 pass
         except Exception as e:
             print(f"Add member: {e}")
             member["id"] = self._generateId()
+            result["done"] = True
         self._members.append(member)
+        return result
 
     #deleting a member
     def delete_member(self, id):
